@@ -19,4 +19,12 @@ suite('ELEMENTOS', function(){
 	assert.equal(esperado_str, resultado_str);
   });
   
+   // Probar un error Cadena.
+  test('Cadena de Elementos: error', function(){
+    var input_str = "#ERROR#";
+	var resultado_str = "Syntax error near '#ERROR#'";
+
+    chai.expect(function () { input_str.tokens() }).to.throw(resultado_str);
+  });
+  
 });
