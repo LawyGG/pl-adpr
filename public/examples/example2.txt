@@ -1,2 +1,4 @@
-a = 4*2;
-p a
+WHILE a == 5
+DO
+  a = 6;
+  b = a
