@@ -1,4 +1,5 @@
-WHILE a == 5
-DO
+WHILE a == 5 DO
+BEGIN
   a = 6;
   b = a
+END.

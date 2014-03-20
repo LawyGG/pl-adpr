@@ -271,6 +271,13 @@
           type: "P",
           value: right
         };
+      } else if (lookahead && lookahead.type === "CALL") {
+        match("CALL");
+        result = {
+          type: "CALL",
+          value: lookahead.value
+        };
+        match("ID");
       } else if (lookahead && lookahead.type === "BEGIN") {
         match("BEGIN");
         result = [statement()];
@@ -286,6 +293,16 @@
         right = statement();
         result = {
           type: "IF",
+          left: left,
+          right: right
+        };
+      } else if (lookahead && lookahead.type === "WHILE") {
+        match("WHILE");
+        left = condition();
+        match("DO");
+        right = statement();
+        result = {
+          type: "WHILE",
           left: left,
           right: right
         };
