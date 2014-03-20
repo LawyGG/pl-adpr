@@ -263,6 +263,12 @@ parse = (input) ->
       result =
         type: "P"
         value: right
+    else if lookahead and lookahead.type is "CALL"
+      match "CALL"
+      result = 
+        type: "CALL"
+        value: lookahead.value
+      match "ID"
     else if lookahead and lookahead.type is "BEGIN"
       match "BEGIN"
       result = [statement()]
