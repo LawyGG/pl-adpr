@@ -14,6 +14,8 @@
     return OUTPUT.innerHTML = result;
   };
 
+  window.main = main;
+
   window.onload = function() {
     return PARSE.onclick = main;
   };
@@ -393,5 +395,7 @@
     }
     return tree;
   };
+
+  window.parse = parse;
 
 }).call(this);

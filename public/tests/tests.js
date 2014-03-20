@@ -28,3 +28,24 @@ suite('ELEMENTOS', function(){
   });
   
 });
+
+suite('Parser', function(){
+  // Probamos el parser.
+  test('Parser', function(){
+	var input_str = "VAR x, squ;     PROCEDURE square;  BEGIN     squ = x * x  END;     BEGIN     x = 1;     WHILE x <= 10 DO     BEGIN        CALL square;        x = x + 1     END  END.";
+	var result = window.parse(input_str);
+	var esperado_str = "[\n    {\n        \"type\": \"Var ID\",\n        \"value\": \"x\"\n    },\n    {\n        \"type\": \"Var ID\",\n        \"value\": \"squ\"\n    },\n    {\n        \"type\": \"Procedure\",\n        \"value\": \"square\",\n        \"left\": [\n            [\n                {\n                    \"type\": \"=\",\n                    \"left\": {\n                        \"type\": \"ID\",\n                        \"value\": \"squ\"\n                    },\n                    \"right\": {\n                        \"type\": \"*\",\n                        \"left\": {\n                            \"type\": \"ID\",\n                            \"value\": \"x\"\n                        },\n                        \"right\": {\n                            \"type\": \"ID\",\n                            \"value\": \"x\"\n                        }\n                    }\n                }\n            ]\n        ]\n    },\n    [\n        {\n            \"type\": \"=\",\n            \"left\": {\n                \"type\": \"ID\",\n                \"value\": \"x\"\n            },\n            \"right\": {\n                \"type\": \"NUM\",\n                \"value\": 1\n            }\n        },\n        {\n            \"type\": \"WHILE\",\n            \"left\": {\n                \"type\": \"<=\",\n                \"left\": {\n                    \"type\": \"ID\",\n                    \"value\": \"x\"\n                },\n                \"right\": {\n                    \"type\": \"NUM\",\n                    \"value\": 10\n                }\n            },\n            \"right\": [\n                {\n                    \"type\": \"CALL\",\n                    \"value\": \"square\"\n                },\n                {\n                    \"type\": \"=\",\n                    \"left\": {\n                        \"type\": \"ID\",\n                        \"value\": \"x\"\n                    },\n                    \"right\": {\n                        \"type\": \"+\",\n                        \"left\": {\n                            \"type\": \"ID\",\n                            \"value\": \"x\"\n                        },\n                        \"right\": {\n                            \"type\": \"NUM\",\n                            \"value\": 1\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n]";
+
+	var resultado_str, tree;
+    try {
+      tree = parse(input_str);
+      resultado_str = JSON.stringify(tree, null, 4);
+    } catch (e) {
+      resultado_str = JSON.stringify(e, null, 4);
+    }
+
+	assert.equal(esperado_str, resultado_str);
+  });
+
+});
+  

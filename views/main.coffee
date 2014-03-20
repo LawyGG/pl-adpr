@@ -1,4 +1,3 @@
-#holiiiiii
 main = ()-> 
   source = original.value
   try 
@@ -7,6 +6,8 @@ main = ()->
     result = """<div class="error">#{result}</div>"""
 
   OUTPUT.innerHTML = result
+
+window.main = main
 
 window.onload = ()-> 
   PARSE.onclick = main
@@ -372,3 +373,6 @@ parse = (input) ->
           "Expected 'end of input' and found '" + 
           input.substr(lookahead.from) + "'"  
   tree
+  
+window.parse = parse
+  
