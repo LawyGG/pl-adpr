@@ -40,6 +40,11 @@ get '/grammar' do
   slim :grammar
 end
 
+get '/tests' do
+  erb :test
+end
+
+
 not_found do
   slim :not_found
 end
