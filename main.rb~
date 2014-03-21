@@ -41,7 +41,7 @@ get '/grammar' do
 end
 
 get '/test' do
-  redirect '/test/index.html' 
+  redirect '/tests/index.html'
 end
 
 not_found do
