@@ -8,7 +8,7 @@ $main-font: Helvetica, Arial, sans-serif;
 
 body {
   font-family: $main-font;
-  background-color: $white;
+  background-color: $blue;
 }
 
 h1 {

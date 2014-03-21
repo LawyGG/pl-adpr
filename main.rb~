@@ -40,11 +40,9 @@ get '/grammar' do
   slim :grammar
 end
 
-
 get '/test' do
-  erb :test
+  redirect '/tests/index.html'
 end
-
 
 not_found do
   slim :not_found
