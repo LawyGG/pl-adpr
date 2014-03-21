@@ -5,12 +5,12 @@ $white: #fff;
 $blue: #002EB8;
 $main-font: Helvetica, Arial, sans-serif;
 
-$bg-img: image-url('imgages/background.jpg', false, false)
+$bg-img: image-url('images/background.jpg', false, false)
 
 body {
   font-family: $main-font;
   background-color: $white;
-  background-image: $bg-img
+  background-image: $bg-img;
 }
 
 h1 {
